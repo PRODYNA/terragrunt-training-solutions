@@ -4,8 +4,7 @@
 
 locals {
   tags = {
-    provisioner = "Terraform"
-    environment = "prod"
+    provisioner = "Terragrunt"
   }
   git_modules_source = "git::https://github.com/PRODYNA/terragrunt-training-modules.git//"
 
@@ -17,8 +16,8 @@ locals {
     "i1",
     "i2",
   ]
-  mysql_user = "trainingadmin"
-  mysql_pw = "mysecret123!"
+  mysql_user = "trainingadmin" # If wanted, put your own here
+  mysql_pw = "mysecret123!" # If wanted, put your own here
 
 }
 
@@ -27,14 +26,14 @@ locals {
 ############
 
 inputs = {
-  resource_group_name  = "rg-training-1"
-  subscription_id      = "3902cdee-a787-433e-b331-02b77bc9758c"
-  storage_account_name = "pdazuretraining1"
-  container_name       = "tf-state"
+  resource_group_name  = "rg-training-1" # Input your own here
+  subscription_id      = "3902cdee-a787-433e-b331-02b77bc9758c" # Input your own here
+  storage_account_name = "pdazuretraining1" # Input your own here
+  container_name       = "tf-state" # Input your own here
 
   location            = "westeurope"
   location_code       = "weu"
-  company_name        = "Krohne"
+  company_name        = "Prodyna"
 }
 
 ##################
@@ -54,4 +53,19 @@ remote_state {
     container_name       = ""
     key                  = "${replace(path_relative_to_include(), "/[^0-9A-Za-z]/", "")}.tfstate"
   }
+}
+
+#####################
+## PROVIDER CONFIG ##
+#####################
+
+generate "provider" {
+ path = "provider.tf"
+ if_exists = "overwrite"
+ contents = <<EOF
+provider "azurerm" {
+  subscription_id = var.subscription_id
+  features {}
+}
+EOF
 }
