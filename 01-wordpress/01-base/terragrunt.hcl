@@ -4,7 +4,7 @@ include "global" {
 }
 
 terraform {
-  source = "${get_repo_root()}/modules/base//." # get_repo_root returns the absolute path to the git root folder
+  source = "${include.global.locals.git_modules_source}base" # "${get_repo_root()}/modules/base//." # get_repo_root returns the absolute path to the git root folder
 }
 
 inputs = {
