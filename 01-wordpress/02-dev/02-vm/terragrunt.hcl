@@ -34,7 +34,7 @@ dependency "mysql" {
 inputs = {
   instances   = include.global.locals.wordpress_instances
   subnet_cidr = dependency.base.outputs.default_subnet_cidr
-  subnet_id   = adependency.base.outputs.db_subnet_id
+  subnet_id   = adependency.base.outputs.default_subnet_id
   pip_ids     = dependency.base.outputs.pip_ids
   asg_id      = dependency.base.outputs.asg_id
   db_user     = include.global.locals.mysql_user

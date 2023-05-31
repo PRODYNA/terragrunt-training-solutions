@@ -34,7 +34,8 @@ dependency "governance" {
 
 inputs = {
   resource_group_name = dependency.base.outputs.resource_group_name
-  db_subnet_cidr      = dependency.base.outputs.db_subnet_cidr # cidr or id?
-  db_user = include.global.locals.mysql_user
-  db_pw = include.global.locals.mysql_pw
+  db_subnet_id        = dependency.base.outputs.db_subnet_id
+  private_dns_zone_id = dependency.base.outputs.private_dns_zone_id
+  db_user             = include.global.locals.mysql_user
+  db_pw               = include.global.locals.mysql_pw
 }

@@ -11,5 +11,5 @@ inputs = {
   resource_group_name = include.global.locals.resource_group_name
   vnet_cidr           = include.global.locals.vnet_cidr
   default_subnet_cidr = include.global.locals.default_subnet_cidr
-  db_subnet_cidr      = include.global.locals.db_subnet_cidr 
+  db_subnet_cidr      = include.global.locals.db_subnet_cidr
 }
