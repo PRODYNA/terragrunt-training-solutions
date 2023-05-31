@@ -19,6 +19,11 @@ locals {
   mysql_user = "trainingadmin" # If wanted, put your own here
   mysql_pw = "mysecret123!" # If wanted, put your own here
 
+  resource_group_name  = "tfstate-weu-prod-rg" #"rg-training-1" # Input your own here
+  subscription_id      = "e3073b20-f0fd-4a32-9112-c1280ffc637e" #"3902cdee-a787-433e-b331-02b77bc9758c" # Input your own here
+  storage_account_name = "pdazuretraining99" #"pdazuretraining1" # Input your own here
+  container_name       = "tfstate" # Input your own here
+
 }
 
 ############
@@ -26,11 +31,8 @@ locals {
 ############
 
 inputs = {
-  resource_group_name  = "rg-training-1" # Input your own here
-  subscription_id      = "3902cdee-a787-433e-b331-02b77bc9758c" # Input your own here
-  storage_account_name = "pdazuretraining1" # Input your own here
-  container_name       = "tf-state" # Input your own here
-
+  subscription_id      = local.subscription_id 
+  resource_group_name  = local.resource_group_name
   location            = "westeurope"
   location_code       = "weu"
   company_name        = "Prodyna"
@@ -47,10 +49,10 @@ remote_state {
     if_exists = "overwrite"
   }
   config = {
-    subscription_id      = locals.subscription_id
-    resource_group_name  = locals.resource_group_name
-    storage_account_name = locals.storage_account_name
-    container_name       = ""
+    subscription_id      = local.subscription_id 
+    resource_group_name  = local.resource_group_name
+    storage_account_name = local.storage_account_name
+    container_name       = local.container_name
     key                  = "${replace(path_relative_to_include(), "/[^0-9A-Za-z]/", "")}.tfstate"
   }
 }
