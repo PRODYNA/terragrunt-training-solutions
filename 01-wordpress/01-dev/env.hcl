@@ -9,7 +9,6 @@ locals {
 
   wordpress_instances = [
     "i1",
-    "i2",
   ]
   mysql_name  = "mysql-training-1" # please change    
   mysql_user  = "trainingadmin" # If wanted, put your own here
