@@ -12,12 +12,12 @@ locals {
     "i2",
   ]
   mysql_name  = "mysql-training-1" # please change    
-  mysql_user  = "trainingadmin" # If wanted, put your own here
-  mysql_pw    = "mysecret123!" # If wanted, put your own here
+  mysql_user  = "trainingadmin"    # If wanted, put your own here
+  mysql_pw    = "mysecret123!"     # If wanted, put your own here
   db_sku_name = "B_Standard_B1ms"
 
   vm_user = "trainingadmin" # If wanted, put your own here
-  vm_pw   = "mysecret123!" # If wanted, put your own here
+  vm_pw   = "mysecret123!"  # If wanted, put your own here
 }
 
 inputs = {
