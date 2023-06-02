@@ -19,3 +19,7 @@ locals {
   vm_user = "trainingadmin" # If wanted, put your own here
   vm_pw   = "mysecret123!" # If wanted, put your own here
 }
+
+inputs = {
+  resource_prefix = "prod"
+}
