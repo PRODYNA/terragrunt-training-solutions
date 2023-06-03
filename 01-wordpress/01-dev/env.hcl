@@ -19,6 +19,10 @@ locals {
   vm_pw   = "mysecret123!"  # If wanted, put your own here
 }
 
+############
+## INPUTS ##
+############
+
 inputs = {
   resource_prefix = "dev"
 }

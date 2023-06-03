@@ -25,7 +25,6 @@ terraform {
 ############
 
 inputs = {
-  resource_group_name = include.global.locals.resource_group_name
   wordpress_instances = include.env.locals.wordpress_instances
   vnet_cidr           = include.env.locals.vnet_cidr
   default_subnet_cidr = include.env.locals.default_subnet_cidr

@@ -33,7 +33,6 @@ dependency "base" {
 ############
 
 inputs = {
-  resource_group_name = include.global.locals.resource_group_name
   mysql_name          = include.env.locals.mysql_name
   db_sku_name         = include.env.locals.db_sku_name
   db_subnet_id        = dependency.base.outputs.db_subnet_id
