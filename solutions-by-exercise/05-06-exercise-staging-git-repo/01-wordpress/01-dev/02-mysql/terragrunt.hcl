@@ -25,7 +25,7 @@ terraform {
 ################
 
 dependency "base" {
-  config_path = "${get_repo_root()}/01-wordpress/01-dev/01-base"
+  config_path = "../01-base" # ${get_repo_root()}/01-wordpress/01-dev/01-base
 }
 
 ############
