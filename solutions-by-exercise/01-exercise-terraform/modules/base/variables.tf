@@ -1,6 +1,7 @@
 variable "resource_prefix" {
   type = string
   description = "Prefix for the azure resources"
+  default     = "dev"
 }
 
 variable "subscription_id" {
