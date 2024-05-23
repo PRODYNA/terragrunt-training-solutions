@@ -20,29 +20,31 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurerm_mysql_flexible_server.mysql](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server) | resource |
-| [azurerm_mysql_flexible_server_configuration.require_secure_transport](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server_configuration) | resource |
+| [azurerm_linux_virtual_machine.vm](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine) | resource |
+| [azurerm_network_interface.vm](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface) | resource |
+| [azurerm_network_interface_application_security_group_association.vm](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface_application_security_group_association) | resource |
 | [azurerm_resource_group.main](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_backup_retention_days"></a> [backup\_retention\_days](#input\_backup\_retention\_days) | How long to keep backups in days | `number` | `7` | no |
+| <a name="input_asg_id"></a> [asg\_id](#input\_asg\_id) | ID of ASG | `string` | n/a | yes |
 | <a name="input_db_pw"></a> [db\_pw](#input\_db\_pw) | Username for the DB | `string` | n/a | yes |
-| <a name="input_db_sku_name"></a> [db\_sku\_name](#input\_db\_sku\_name) | Name of the SKU to use for the MySQL | `string` | `"B_Standard_B1ms"` | no |
-| <a name="input_db_subnet_id"></a> [db\_subnet\_id](#input\_db\_subnet\_id) | Id of the subnet where to deploy the DB | `string` | n/a | yes |
+| <a name="input_db_url"></a> [db\_url](#input\_db\_url) | Url to the mysql database | `string` | n/a | yes |
 | <a name="input_db_user"></a> [db\_user](#input\_db\_user) | Password for the DB | `string` | n/a | yes |
-| <a name="input_mysql_name"></a> [mysql\_name](#input\_mysql\_name) | Name of the MySQL | `string` | n/a | yes |
-| <a name="input_mysql_zone"></a> [mysql\_zone](#input\_mysql\_zone) | Zone where to deploy, can be 1,2 or 3 | `number` | `2` | no |
-| <a name="input_private_dns_zone_id"></a> [private\_dns\_zone\_id](#input\_private\_dns\_zone\_id) | Id of the private dns zone to use for the DB | `string` | n/a | yes |
+| <a name="input_instances"></a> [instances](#input\_instances) | List of Wordpress Instances | `list(string)` | <pre>[<br>  "i1"<br>]</pre> | no |
+| <a name="input_pip_ids"></a> [pip\_ids](#input\_pip\_ids) | IDs of public IPs | `list(string)` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Name of the resource group to use | `string` | n/a | yes |
 | <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | Prefix for the azure resources | `string` | `"dev"` | no |
+| <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | ID of subnet | `string` | n/a | yes |
 | <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | ID of subscription to deploy to | `string` | n/a | yes |
+| <a name="input_vm_pw"></a> [vm\_pw](#input\_vm\_pw) | Username for the DB | `string` | n/a | yes |
+| <a name="input_vm_user"></a> [vm\_user](#input\_vm\_user) | Password for the DB | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_db_url"></a> [db\_url](#output\_db\_url) | n/a |
+| <a name="output_vm_public_ips"></a> [vm\_public\_ips](#output\_vm\_public\_ips) | n/a |
 <!-- END_TF_DOCS -->

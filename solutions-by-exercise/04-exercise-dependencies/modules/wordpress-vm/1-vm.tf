@@ -54,6 +54,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
     storage_account_type = "Standard_LRS"
   }
 
+  # careful, the tpl file NEEDS to have LF LINEENDINGS! On windows: in VSCode bottom right CRLF -> LF
   provisioner "file" {
     content = templatefile("2-start-wordpress.tpl", {
       db_user = var.db_user

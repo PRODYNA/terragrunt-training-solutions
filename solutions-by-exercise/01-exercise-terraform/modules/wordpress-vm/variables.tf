@@ -1,10 +1,11 @@
 variable "resource_prefix" {
-  type = string
+  type        = string
   description = "Prefix for the azure resources"
+  default     = "dev"
 }
 
 variable "subscription_id" {
-  type = string
+  type        = string
   description = "ID of subscription to deploy to"
 }
 
@@ -14,8 +15,9 @@ variable "resource_group_name" {
 }
 
 variable "instances" {
-  type        = list
+  type        = list(string)
   description = "List of Wordpress Instances"
+  default     = ["i1"]
 }
 
 variable "subnet_id" {
@@ -24,7 +26,7 @@ variable "subnet_id" {
 }
 
 variable "pip_ids" {
-  type = list(string)
+  type        = list(string)
   description = "IDs of public IPs"
 }
 
@@ -34,12 +36,12 @@ variable "asg_id" {
 }
 
 variable "db_user" {
-  type = string
+  type        = string
   description = "Password for the DB"
 }
 
 variable "db_pw" {
-  type = string
+  type        = string
   description = "Username for the DB"
 }
 
@@ -49,11 +51,11 @@ variable "db_url" {
 }
 
 variable "vm_user" {
-  type = string
+  type        = string
   description = "Password for the DB"
 }
 
 variable "vm_pw" {
-  type = string
+  type        = string
   description = "Username for the DB"
 }

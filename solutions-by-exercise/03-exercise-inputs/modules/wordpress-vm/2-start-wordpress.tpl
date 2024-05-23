@@ -1,6 +1,4 @@
 #!/bin/bash
-PUB_IP="$( dig @ns1-1.akamaitech.net ANY whoami.akamai.net +short )"
-
 sudo apt-get update
 sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
 

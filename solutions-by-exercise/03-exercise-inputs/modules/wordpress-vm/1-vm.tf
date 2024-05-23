@@ -5,7 +5,7 @@
 resource "azurerm_network_interface" "vm" {
   count = length(var.pip_ids)
 
-  name                = "nic-wordpress-${count.index}"
+  name                = "${var.resource_prefix}-nic-wordpress-${count.index}"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
 
@@ -18,7 +18,7 @@ resource "azurerm_network_interface" "vm" {
 }
 
 resource "azurerm_network_interface_application_security_group_association" "vm" {
-  count = length(var.pip_ids) 
+  count = length(var.pip_ids)
 
   network_interface_id          = azurerm_network_interface.vm[count.index].id
   application_security_group_id = var.asg_id
@@ -29,7 +29,7 @@ resource "azurerm_network_interface_application_security_group_association" "vm"
 #####################
 
 resource "azurerm_linux_virtual_machine" "vm" {
-  count = length(var.pip_ids) 
+  count = length(var.pip_ids)
 
   name                            = "${var.resource_prefix}-vm-wordpress-${count.index}"
   location                        = data.azurerm_resource_group.main.location
@@ -39,7 +39,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   admin_password                  = var.vm_pw
   disable_password_authentication = false
   network_interface_ids = [
-    azurerm_network_interface.vm[count.index].id, 
+    azurerm_network_interface.vm[count.index].id,
   ] ##
 
   source_image_reference {
@@ -54,6 +54,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
     storage_account_type = "Standard_LRS"
   }
 
+  # careful, the tpl file NEEDS to have LF LINEENDINGS! On windows: in VSCode bottom right CRLF -> LF
   provisioner "file" {
     content = templatefile("2-start-wordpress.tpl", {
       db_user = var.db_user
@@ -67,7 +68,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
       host     = self.public_ip_address
       user     = self.admin_username
       password = self.admin_password
-      agent = false
+      agent    = false
     }
   }
 
