@@ -12,8 +12,8 @@ dependency "base" {
 }
 
 inputs = {
-  db_subnet_id = dependency.base.outputs.private_dns_zone_id
-  private_dns_zone_id = dependency.base.outputs.db_subnet_id
+  db_subnet_id = dependency.base.outputs.db_subnet_id
+  private_dns_zone_id = dependency.base.outputs.private_dns_zone_id
   mysql_name = "mysql"
   db_user = "test"
   db_pw = "verYs4fEP4ssw0rd"
